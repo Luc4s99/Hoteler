@@ -1,0 +1,74 @@
+.selecaoCadastroContainer{    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    /* Padrao = a 100, se tiver navbar + 60, se tiver footer + 60 */
+    min-height:calc(100vh - 120px);
+}
+
+.selecaoCadastroLogo{    
+    padding-top: 3rem;
+}
+
+.selecaoCadastroLabel{
+    font-size:2rem;
+    padding: 3rem;
+}
+
+.selecaoCadastroOpcoes{
+    display: flex;
+    flex-direction: column;
+}
+
+.selecaoCadastroImagem{
+    display: flex;
+    justify-content: space-around;   
+    margin-bottom: 0.25rem; 
+}
+.selecaoCadastroImagem img{
+    height: 15rem;
+    width: 20rem;
+}
+
+.selecaoCadastroBotoes{
+    display: flex;
+    justify-content: space-around;   
+    margin-bottom: 5rem; 
+}
+
+.selecaoCadastroBotoes button{
+    width: 20rem;
+    background-color: #1b501b;
+}
+
+.selecaoCadastroBotoes .btn{
+    width: 20rem;
+    background-color: #1b501b;
+}
+
+.selecaoCadastroBotoes .btn:hover{
+    width: 20rem;
+    background-color: white;
+    color: #1b501b;
+    transition: .3s ease-in-out;
+}
+
+.selecaoCadastroVoltar{
+    /* margin-top: 1rem; */
+    padding-bottom: 3rem;
+}
+
+.selecaoCadastroVoltar .btn{
+    width: 15rem;
+    background-color: #1b501b;
+}
+
+.selecaoCadastroVoltar .btn:hover{
+    width: 15rem;
+    background-color: white;
+    color: #1b501b;
+    transition: .3s ease-in-out;
+}

@@ -1,0 +1,33 @@
+.listarOperadorContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    position: relative;
+ 
+
+    /* Padrao = a 100, se tiver navbar + 60, se tiver footer + 60 */
+    min-height:calc(100vh - 120px);
+}
+
+.listarOperadorTitulo{
+    padding: 2rem;
+}
+
+.listarOperadorSubtitulo{
+    margin-bottom: 2rem;
+}
+
+.listarOperadorForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listarOperadorForm .btn{
+    width: 5rem;
+    height: 3rem;
+    margin-top: 1.5rem;
+}

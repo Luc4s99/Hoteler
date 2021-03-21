@@ -1,0 +1,74 @@
+.selecaoListaContainer{    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    /* Padrao = a 100, se tiver navbar + 60, se tiver footer + 60 */
+    min-height:calc(100vh - 120px);
+}
+
+.selecaoListaLogo{    
+    padding-top: 3rem;
+}
+
+.selecaoListaLabel{
+    font-size:2rem;
+    padding: 3rem;
+}
+
+.selecaoListaOpcoes{
+    display: flex;
+    flex-direction: column;
+}
+
+.selecaoListaImagem{
+    display: flex;
+    justify-content: space-around;   
+    margin-bottom: 0.25rem; 
+}
+.selecaoListaImagem img{
+    height: 15rem;
+    width: 20rem;
+}
+
+.selecaoListaBotoes{
+    display: flex;
+    justify-content: space-around;   
+    margin-bottom: 5rem; 
+}
+
+.selecaoListaBotoes button{
+    width: 20rem;
+    background-color: #1b501b;
+}
+
+.selecaoListaBotoes .btn{
+    width: 20rem;
+    background-color: #1b501b;
+}
+
+.selecaoListaBotoes .btn:hover{
+    width: 20rem;
+    background-color: white;
+    color: #1b501b;
+    transition: .3s ease-in-out;
+}
+
+.selecaoListaVoltar{
+    /* margin-top: 1rem; */
+    padding-bottom: 3rem;
+}
+
+.selecaoListaVoltar .btn{
+    width: 15rem;
+    background-color: #1b501b;
+}
+
+.selecaoListaVoltar .btn:hover{
+    width: 15rem;
+    background-color: white;
+    color: #1b501b;
+    transition: .3s ease-in-out;
+}

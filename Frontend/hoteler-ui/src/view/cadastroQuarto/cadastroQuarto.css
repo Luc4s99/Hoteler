@@ -1,0 +1,22 @@
+.cadastroQuartoContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* justify-content: center; */
+    /* align-items: center; */
+    position: relative;
+
+    /* Padrao = a 100, se tiver navbar + 60, se tiver footer + 60 */
+    min-height:calc(100vh - 120px);
+}
+
+.cadastroQuarto{
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.cadastroQuartoTitulo{
+    padding: 2rem;
+}

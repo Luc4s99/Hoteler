@@ -1,0 +1,33 @@
+.listarReservaContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    position: relative;
+ 
+
+    /* Padrao = a 100, se tiver navbar + 60, se tiver footer + 60 */
+    min-height:calc(100vh - 120px);
+}
+
+.listarReservaTitulo{
+    padding: 2rem;
+}
+
+.listarReservaSubtitulo{
+    margin-bottom: 2rem;
+}
+
+.listarReservaForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listarReservaForm .btn{
+    width: 5rem;
+    height: 3rem;
+    margin-top: 1.5rem;
+}

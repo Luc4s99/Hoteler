@@ -1,0 +1,54 @@
+.cadastroOperadorContainer{    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    position: relative;
+
+    /* Padrao = a 100, se tiver navbar + 60, se tiver footer + 60 */
+    min-height:calc(100vh - 120px);
+}
+
+.cadastroOperadorFormContainer{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5rem;
+}
+
+.cadastroOperadorFormUsuario{
+    margin: 0.5rem;
+}
+
+.cadastroOperadorFormDados{
+    width: 70%;
+    margin: 0.5rem;
+}
+
+.cadastroOperadorTitulo{
+    padding: 2rem;
+}
+
+.cadastroOperadorSubTitulo{
+
+}
+
+.cadastroOperadorBotoes{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;    
+}
+
+.cadastroOperadorBotoes .btn{
+    margin: 1rem;    
+}
+
+/* .cadastroOperadorBotoes .btn:first-child{
+    margin-right: 10rem;    
+} */
+

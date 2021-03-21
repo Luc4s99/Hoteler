@@ -1,0 +1,34 @@
+.realizarReservaContainer{    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    position: relative;
+
+    /* Padrao = a 100, se tiver navbar + 60, se tiver footer + 60 */
+    min-height:calc(100vh - 120px);
+}
+
+.realizarReservaTitulo{
+    padding: 2rem;
+}
+
+.realizarReservaDados{
+    display: flex;
+    justify-content: space-around;
+}
+
+.fimRealizarReserva{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center; 
+    padding: 1rem;
+    
+    display: flex;
+    justify-content: space-around;
+}
+
