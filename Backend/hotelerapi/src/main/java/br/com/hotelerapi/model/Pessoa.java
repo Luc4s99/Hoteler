@@ -3,17 +3,58 @@ package br.com.hotelerapi.model;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED) //Estrategia de mapeamento de herança por Subclasse
+@Table(name = "pessoa")
 public class Pessoa {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotNull
+	@NotEmpty
 	private String nome;
+	
+	@NotNull
+	@NotEmpty
 	private String endereco;
+	
+	@NotNull
+	@NotEmpty
 	private String cidade;
+	
+	@NotNull
+	@NotEmpty
 	private String estado;
+	
+	@NotNull
+	@NotEmpty
 	private String cpf;
+	
+	@NotNull
+	@NotEmpty
 	private String telefone;
+	
+	@NotNull
+	@NotEmpty
 	private String email;
+	
+	
 	private String sexo;
+	
+	@NotNull
+	@NotEmpty
 	private Date nascimento;
 	
 	public Pessoa(Long id, String nome, String endereco, String cidade, String estado, String cpf, String telefone,

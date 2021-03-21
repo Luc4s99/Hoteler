@@ -1,25 +1,48 @@
 package br.com.hotelerapi.model;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "quarto")
 public class Quarto {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotNull
 	private int capacidade;
-	private List<Hospede> hospedes;
+	
+	@NotNull
+	@OneToOne
+	@JoinColumn(name = "reserva_id", referencedColumnName = "id")
+	private Reserva reserva;
+	
+	@NotNull
 	private boolean ocupado;
+	
+	@NotNull
 	private String tipo;
+	
+	@NotNull
 	private Float diaria;
 	
 	public Quarto() {
 		
 	}
 
-	public Quarto(Long id, int capacidade, List<Hospede> hospedes, boolean ocupado, String tipo, Float diaria) {
+	public Quarto(Long id, int capacidade, Reserva reserva, boolean ocupado, String tipo, Float diaria) {
 		
 		this.id = id;
 		this.capacidade = capacidade;
-		this.hospedes = hospedes;
+		this.reserva = reserva;
 		this.ocupado = ocupado;
 		this.tipo = tipo;
 		this.diaria = diaria;
@@ -41,12 +64,12 @@ public class Quarto {
 		this.capacidade = capacidade;
 	}
 
-	public List<Hospede> getHospedes() {
-		return hospedes;
+	public Reserva getReserva() {
+		return reserva;
 	}
 
-	public void setHospedes(List<Hospede> hospedes) {
-		this.hospedes = hospedes;
+	public void setReserva(Reserva reserva) {
+		this.reserva = reserva;
 	}
 
 	public boolean isOcupado() {

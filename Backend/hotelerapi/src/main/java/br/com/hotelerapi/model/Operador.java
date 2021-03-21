@@ -2,10 +2,26 @@ package br.com.hotelerapi.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import com.sun.istack.NotNull;
+
+@Entity
+@PrimaryKeyJoinColumn(name = "id")
+@Table(name = "operador")
 public class Operador extends Pessoa{
 
+	@NotNull
+	@NotBlank
 	private String usuario;
+	
+	@NotNull
 	private String senha;
+	
+	@NotNull
 	private TipoUsuario tipo;
 	
 	public Operador(Long id, String nome, String endereco, String cidade, String estado, String cpf, String telefone,
