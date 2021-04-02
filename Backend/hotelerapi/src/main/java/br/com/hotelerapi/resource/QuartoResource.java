@@ -13,43 +13,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.hotelerapi.model.Reserva;
-import br.com.hotelerapi.service.ReservaService;
+import br.com.hotelerapi.model.Quarto;
+import br.com.hotelerapi.service.QuartoService;
 
 @RestController
-@RequestMapping("/reservas")
-public class ReservaResource {
+@RequestMapping("/quartos")
+public class QuartoResource {
 
 	@Autowired
-	private ReservaService rService;
+	private QuartoService qService;
 	
 	@GetMapping
-	public ResponseEntity<?> listarTodasReservas() {
+	public ResponseEntity<?> listarTodosQuartos() {
 		
-		return rService.listarTodasReservas();
+		return qService.listarTodosQuartos();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> buscarReservaPorId(@PathVariable Long id) {
+	public ResponseEntity<?> buscarQuartoPorId(@PathVariable Long id) {
 		
-		return rService.buscarReservaPorId(id);
-	}
-	
-	@PostMapping
-	public ResponseEntity<?> salvarReserva(@Valid @RequestBody Reserva reserva) {
-		
-		return rService.salvarReserva(reserva);
+		return qService.buscarQuartoPorId(id);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deletarReserva(@PathVariable Long id) {
+	public ResponseEntity<?> deletarQuarto(@PathVariable Long id) {
 		
-		return rService.deletarReserva(id);
+		return qService.deletarQuarto(id);
+	}
+	
+	@PostMapping
+	public ResponseEntity<?> adicionarQuarto(@Valid @RequestBody Quarto quarto) {
+		
+		return qService.adicionarQuarto(quarto);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> atualizarReserva(@PathVariable Reserva reserva) {
+	public ResponseEntity<?> atualizarQuarto(@Valid @RequestBody Quarto quarto) {
 		
-		return rService.atualizarReserva(reserva);
+		return qService.atualizarQuarto(quarto);
 	}
 }

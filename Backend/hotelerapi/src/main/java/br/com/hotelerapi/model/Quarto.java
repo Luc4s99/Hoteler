@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -21,11 +19,6 @@ public class Quarto {
 	private int capacidade;
 	
 	@NotNull
-	@OneToOne
-	@JoinColumn(name = "reserva_id", referencedColumnName = "id")
-	private Reserva reserva;
-	
-	@NotNull
 	private boolean ocupado;
 	
 	@NotNull
@@ -38,11 +31,10 @@ public class Quarto {
 		
 	}
 
-	public Quarto(Long id, int capacidade, Reserva reserva, boolean ocupado, String tipo, Float diaria) {
+	public Quarto(Long id, int capacidade, boolean ocupado, String tipo, Float diaria) {
 		
 		this.id = id;
 		this.capacidade = capacidade;
-		this.reserva = reserva;
 		this.ocupado = ocupado;
 		this.tipo = tipo;
 		this.diaria = diaria;
@@ -62,14 +54,6 @@ public class Quarto {
 
 	public void setCapacidade(int capacidade) {
 		this.capacidade = capacidade;
-	}
-
-	public Reserva getReserva() {
-		return reserva;
-	}
-
-	public void setReserva(Reserva reserva) {
-		this.reserva = reserva;
 	}
 
 	public boolean isOcupado() {
