@@ -8,18 +8,18 @@ body {
     display: inline-block;
 }
 
-div {
+.homeDiv {
 
     display: inline-block;
 }
 
-div.conteudo {
+.homeConteudo {
 
     margin-left: 150px;
     width: 600px;
 }
 
-h4 {
+.homeH4 {
 
     margin-top: 50px;
 }

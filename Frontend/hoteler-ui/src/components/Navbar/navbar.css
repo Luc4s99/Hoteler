@@ -3,9 +3,8 @@
 }
 .nav-item a{
      color: #FFF;
-    transition: .3s ease-in-out;
+     transition: .3s ease-in-out;
 }
 .nav-item a:hover{
      color: #ffff00;
 }
-    
