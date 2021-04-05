@@ -22,10 +22,14 @@ public class Operador extends Pessoa{
 	private String senha;
 	
 	@NotNull
-	private TipoUsuario tipo;
+	private String tipo;
+	
+	public Operador() {
+		
+	}
 	
 	public Operador(Long id, String nome, String endereco, String cidade, String estado, String cpf, String telefone,
-			String email, String sexo, Date nascimento, String usuario, String senha, TipoUsuario tipo) {
+			String email, String sexo, Date nascimento, String usuario, String senha, String tipo) {
 		
 		super(id, nome, endereco, cidade, estado, cpf, telefone, email, sexo, nascimento);
 		this.senha = senha;
@@ -49,11 +53,11 @@ public class Operador extends Pessoa{
 		this.senha = senha;
 	}
 
-	public TipoUsuario getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(TipoUsuario tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 

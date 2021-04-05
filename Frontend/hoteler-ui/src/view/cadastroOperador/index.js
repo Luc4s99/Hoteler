@@ -1,5 +1,5 @@
 //React
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
 // CSS
@@ -11,7 +11,26 @@ import Footer from '../../components/Footer';
 import LoginForm from '../../components/LoginForm';
 import DadosForm from '../../components/DadosForm';
 
+//Conexao com a API
+import useOperadorAPI from '../../helpers/OperadoresAPI';
+
 function CadastroOperador() {
+
+  const operadorAPI = useOperadorAPI();
+  const [redirect, setRedirect] = useState(0);
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [sexo, setSexo] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [nascimento, setNascimento] = useState('');
+  const [estado, setEstado] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [endereco, setEndereco] = useState('');
+  const [usuario, setUsuario] = useState('');
+  const [senha, setSenha] = useState('');
+  const [tipoUsuario, setTipoUsuario] = useState('');
+
   return (
     <>
       <NavBar />

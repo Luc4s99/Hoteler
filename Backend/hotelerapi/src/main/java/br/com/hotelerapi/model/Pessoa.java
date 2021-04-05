@@ -10,8 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED) //Estrategia de mapeamento de herança por Subclasse
@@ -54,8 +58,13 @@ public class Pessoa {
 	private String sexo;
 	
 	@NotNull
-	@NotEmpty
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date nascimento;
+	
+	public Pessoa() {
+		
+	}
 	
 	public Pessoa(Long id, String nome, String endereco, String cidade, String estado, String cpf, String telefone,
 			String email, String sexo, Date nascimento) {

@@ -34,14 +34,14 @@ public class QuartoService {
 	public ResponseEntity<?> deletarQuarto(Long id) {
 		
 		try {
-			
+
 			quartos.deleteById(id);
 			
 			return ResponseEntity.ok().build();
 			
 		}catch(Exception ex) {
-			
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
 	

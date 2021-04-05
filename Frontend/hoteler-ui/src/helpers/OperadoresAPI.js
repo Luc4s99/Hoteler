@@ -6,12 +6,10 @@ const endPoint = axios.create({
 
 const API = {
 
-    // Nome, cpf, sexo, dataNascimento, email, telefone, estado, cidade, endereco
-
-    //Buscar todos os hospedes
-    fetchHospede: async () => {
+    //Buscar todos os operadores
+    fetchOperador: async () => {
     try{
-        const query = `hospedes`
+        const query = `operadores`
         const response = await endPoint.get(query);
 
         return response.data;
@@ -21,11 +19,12 @@ const API = {
         }
     }
     },
-    addHospede: async (hospede) => {
+    addOperador: async (operador) => {
         try{
-            const response = await endPoint.post("hospedes",
-            {nome: hospede.nome, cpf:hospede.cpf, sexo:hospede.sexo, nascimento:hospede.nascimento, email:hospede.email,
-            telefone: hospede.telefone, estado:hospede.estado, cidade:hospede.cidade, endereco:hospede.endereco});
+            const response = await endPoint.post("operadores/",
+            {nome: operador.nome, cpf:operador.cpf, sexo:operador.sexo, nascimento:operador.nascimento, email:operador.email,
+            telefone: operador.telefone, estado:operador.estado, cidade:operador.cidade, endereco:operador.endereco, usuario:operador.usuario,
+            senha:operador.senha, tipo:operador.tipo});
 
             return response;
         } catch(error){
@@ -38,11 +37,12 @@ const API = {
             }
         }
     },
-    updateHospede: async(id, hospede) => {
+    updateOperador: async(id, operador) => {
         try{
-            const response = await endPoint.put(`hospedes/${id}`,
-            {nome: hospede.nome, cpf:hospede.cpf, sexo:hospede.sexo, dataNascimento:hospede.dataNascimento, email:hospede.email,
-            telefone: hospede.telefone, estado:hospede.estado, cidade:hospede.cidade, endereco:hospede.endereco});
+            const response = await endPoint.put(`operadores/${id}`,
+            {nome: operador.nome, cpf:operador.cpf, sexo:operador.sexo, dataNascimento:operador.dataNascimento, email:operador.email,
+            telefone: operador.telefone, estado:operador.estado, cidade:operador.cidade, endereco:operador.endereco, usuario:operador.usuario,
+            senha:operador.senha, tipo:operador.tipo});
         } catch(error){
             let msg = [];
             for (let m of error.response.data){
@@ -53,9 +53,9 @@ const API = {
             }
         }
     },
-    deleteHospede: async(id) => {
+    deleteOperador: async(id) => {
         try{
-            const response = await endPoint.delete(`hospedes/${id}`);
+            const response = await endPoint.delete(`operadores/${id}`);
             return{
                 msg: "ok"
             }

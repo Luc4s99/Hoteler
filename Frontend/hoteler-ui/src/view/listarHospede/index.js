@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
+import useHospedeAPI from '../../helpers/HospedesApi';
 
 import './listarHospede.css';
 
 function ListarHospede() {
 
+    let listagemHospede = 0;
+    const hospedeAPI = useHospedeAPI();
     const [hospedes, setHospedes] = useState([]); // Vetor de categorias
-    const [totalPagesHospedes, setTotalPagesHospedes] = useState(1); // Total de paginas
-    const [actualPageHospedes, setActualPageHospedes] = useState(1);
 
     useEffect(()=>{
 
         const getDadosHospedes = async () => {
         
+            const obj = await hospedeAPI.fetchHospede();
+            
+            if(obj) {
+                 
+                setHospedes(obj);
+            }
         }
 
         getDadosHospedes();
@@ -50,6 +57,19 @@ function ListarHospede() {
                 </tr>
             </thead>
             <tbody>
+
+                {
+                    hospedes.map((hospede, index) => {
+                        return(
+                            <tr key={index}>
+                                <td>{listagemHospede = listagemHospede + 1}</td>
+                                <td>{hospede.id}</td>
+                                <td>{hospede.nome}</td>
+                                <td><button type="button" className="btn btn-primary">Editar</button></td>
+                            </tr>
+                        );
+                    })
+                }
 
             </tbody>
         </table>

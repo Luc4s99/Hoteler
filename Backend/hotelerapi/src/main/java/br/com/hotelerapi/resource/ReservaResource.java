@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.hotelerapi.model.Reserva;
 import br.com.hotelerapi.service.ReservaService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/reservas")
 public class ReservaResource {
@@ -37,7 +39,7 @@ public class ReservaResource {
 	
 	@PostMapping
 	public ResponseEntity<?> salvarReserva(@Valid @RequestBody Reserva reserva) {
-		
+		System.out.println("=======^>>>>>" + reserva.getHospedes().get(0).getNome());
 		return rService.salvarReserva(reserva);
 	}
 	
@@ -48,7 +50,7 @@ public class ReservaResource {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> atualizarReserva(@PathVariable Reserva reserva) {
+	public ResponseEntity<?> atualizarReserva(@Valid @RequestBody Reserva reserva) {
 		
 		return rService.atualizarReserva(reserva);
 	}

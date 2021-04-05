@@ -34,7 +34,6 @@ public class ReservaService {
 	
 	//Salvar uma reserva
 	public ResponseEntity<?> salvarReserva(Reserva reserva) {
-		
 		Reserva reservaSalva = reservas.save(reserva);
 		
 		//Se a reserva for null, responde com o status de não criada, senão com status de sucesso

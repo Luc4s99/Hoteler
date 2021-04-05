@@ -12,8 +12,8 @@ function TelaInicial() {
             <NavBar />
             <div className="telaInicialContainer">
               <div className="opcoesTelaInicial">
-                <Link to="/selecaoCadastro" className="btn btn-success btn-lg">Selecao Cadastro</Link>
-                <Link to="/selecaoLista" className="btn btn-success btn-lg">Selecao Listas</Link>
+                <Link to="/selecaoCadastro" className="btn btn-success btn-lg">Seleção Cadastro</Link>
+                <Link to="/selecaoLista" className="btn btn-success btn-lg">Seleção de Listagem</Link>
                 <Link to="/realizarReserva" className="btn btn-success btn-lg">Realizar Reserva</Link>
               </div>
             </div>            

@@ -1,5 +1,6 @@
 package br.com.hotelerapi.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Reserva {
 	
 	@NotNull
 	@OneToMany(mappedBy="reserva")
-	private List<Hospede> hospedes;
+	private List<Hospede> hospedes = new ArrayList<>();
 	
 	@NotNull
 	@OneToOne

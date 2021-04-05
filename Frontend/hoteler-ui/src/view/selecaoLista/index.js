@@ -23,7 +23,7 @@ function SelecaoLista() {
             <div className="selecaoListaLogo">
                 <img src="https://via.placeholder.com/500x150?text=Logo" alt="logo"></img>
             </div>
-            <span className="selecaoListaLabel"> Opções de Lista </span>
+            <span className="selecaoListaLabel"> Opções de Listagem </span>
             <div className="selecaoListaOpcoes">
                 <div className="selecaoListaImagem">
                     <img src={operador} alt="Operador"></img>

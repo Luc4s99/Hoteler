@@ -8,25 +8,24 @@ const API = {
 
         // id, tipo, preco, capacidade, ocupado
 
-       fetchQuarto: async (page,size) => {
+       fetchQuarto: async () => {
         try{
-            const query = `hospedes?page=${page}&size=${size}`
+            const query = `quartos`
             const response = await endPoint.get(query);
+            
+            return response.data;
         } catch(error){
             return {
-                dados: [],
-                paginas: 0
+                dados: []
             }
         }
        },
        addQuarto: async (quarto) => {
            try{
-               const response = await endPoint.post("quartos/",
-               {tipo:quarto.tipo, preco:quarto.preco, capacidade:quarto.capacidade, ocupado:quarto.ocupado});
+               const response = await endPoint.post("quartos",
+               {tipo:quarto.tipo, diaria:quarto.diaria, capacidade:quarto.capacidade, ocupado:quarto.ocupado});
 
-               return{
-                   msg: "ok"
-               }
+               return response;
            } catch(error){
                 let msg = [];
                 for (let m of error.response.data){
@@ -54,9 +53,8 @@ const API = {
        deleteQuarto: async(id) => {
            try{
                const response = await endPoint.delete(`quartos/${id}`);
-               return{
-                   msg: "ok"
-               }
+               
+               return response;
            } catch(error){
                 let msg = [];
                 for (let m of error.response.data){

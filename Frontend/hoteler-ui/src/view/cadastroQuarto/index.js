@@ -1,47 +1,88 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import './cadastroQuarto.css'
 
+import useQuartoAPI from '../../helpers/QuartoApi';
+
 import NavBar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 function CadastroQuarto() {
-  return (
+    
+    const quartoAPI = useQuartoAPI();
+    const [capacidade, setCapacidade] = useState(0);
+    const [tipoQuarto, setTipoQuarto] = useState('');
+    const [diaria, setDiaria] = useState(0);
+    const [ocupado, setOcupado] = useState(false);
+    const [redirect, setRedirect] = useState(0);
+    
+    function cadastraQuarto() {
+
+        let quarto = {
+            tipo: tipoQuarto,
+            capacidade: capacidade,
+            diaria: diaria,
+            ocupado: ocupado
+        }
+
+        const obj = quartoAPI.addQuarto(quarto);
+
+        if(obj) {
+            //console.log("Quarto adicionado com sucesso");
+            setRedirect(1);
+        } else {
+            console.log(obj);
+        }
+    }
+
+    return (
       <>
+        {redirect == 1 ? <Redirect to="/telaInicial" /> : null}
         <NavBar />
         <div className="cadastroQuartoContainer">
             <h1 className="cadastroQuartoTitulo">Cadastro de Quarto</h1>
 
-            <p> O ID do quarto seria seu número? <br />
-                É necessário cadastrar a capacidade? <br />
-                Pois através do tipo do Quarto daria pra resgatar a quantidade, e vice versa
-                Digo, um quarto de solteiro teria capacidade para uma pessoa certo?
-            </p>
-
             <div className="cadastroQuarto">
                 <div className="form-group">
-                    <label htmlFor="capacidadeQuarto">Capacidade do Quarto</label>
-                    <select className="form-control" name="capacidade" id="capacidadeQuarto">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>8</option>
-                    </select>
+                    <label htmlFor="capacidadeQuarto">Capacidade do Quarto (Máximo de 10)</label>
+                    <input onChange={e => setCapacidade(e.target.value)} type="number" className="form-control" max="10" />
+
                     <label htmlFor="tipoQuarto">Tipo do Quarto</label>
-                    <select className="form-control" name="tipo" id="tipoQuarto">
-                        <option>Solteiro</option>
-                        <option>Duplo Solteiro</option>
-                        <option>Casal</option>
-                        <option>4</option>
-                        <option>8</option>
-                    </select>                    
+                    <select defaultValue="Selecione" onChange={e => setTipoQuarto(e.target.value)} className="form-control" name="tipo" id="tipoQuarto">
+                        <option value="Selecione">Selecione</option>
+                        <option value="Solteiro">Solteiro</option>
+                        <option value="Duplo Solteiro">Duplo Solteiro</option>
+                        <option value="Casal">Casal</option>
+                        <option value="Dormitório">Dormitório</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Master">Master</option>
+                        <option value="Deluxe">Deluxe</option>
+                    </select>
+
+                    <label htmlFor="diariaQuarto">Diária do Quarto</label>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text">$</span>
+                        <input onChange={e => setDiaria(parseFloat(e.target.value))} id="diariaQuarto" type="text" className="form-control" />
+                    </div>
+
+                    <div className="form-check form-check-inline">
+                        <input onClick={e => setOcupado(true)} className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                        <label className="form-check-label" htmlFor="inlineRadio1">Quarto Ocupado</label>
+                    </div>
+
+                    <div className="form-check form-check-inline">
+                        <input onClick={e => setOcupado(false)} className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                        <label className="form-check-label" htmlFor="inlineRadio2">Quarto Livre</label>
+                    </div>
+
                 </div>
+
                 <div className="cadastroQuartoBotoes">
                     <Link to="/selecaoCadastro" className="btn btn-danger btn-lg mr-4">Cancelar</Link>
-                    <button className="btn btn-success btn-lg">Cadastrar</button>
+                    <button onClick={cadastraQuarto} className="btn btn-success btn-lg">Cadastrar</button>
                 </div>
+
             </div>
           
         </div>

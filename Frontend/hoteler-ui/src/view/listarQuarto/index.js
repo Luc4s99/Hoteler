@@ -1,24 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
+import useQuartoAPI from '../../helpers/QuartoApi';
 
 import './listarQuarto.css';
 
 function ListarQuarto() {
 
-    const [quartos, setQuartos] = useState([]); // Vetor de categorias
-    const [totalPagesQuartos, setTotalPagesQuartos] = useState(1); // Total de paginas
-    const [actualPageQuartos, setActualPageQuartos] = useState(1);
+    let listagemQuarto = 0;
+    const quartoAPI = useQuartoAPI();
+    const [quartos, setQuartos] = useState([]); // Vetor de quartos
 
     useEffect(()=>{
 
         const getDadosQuartos = async () => {
-        
+            const obj = await quartoAPI.fetchQuarto();
+
+            if(obj) {
+
+                setQuartos(obj);
+            }
         }
 
         getDadosQuartos();
 
     },[])
+
+    function deletarQuarto(id) {
+
+        try {
+            
+            quartoAPI.deleteQuarto(id);
+        }catch(ex) {
+
+            console.log(ex);
+        }
+    }
 
   return (
     <>
@@ -60,12 +77,32 @@ function ListarQuarto() {
                     <th scope="col">ID do Quarto</th>
                     <th scope="col">Capacidade</th>
                     <th scope="col">Tipo</th>
-                    <th scope="col">Diárias</th>
-                    <th scope="col">Hospedes</th>
+                    <th scope="col">Diária</th>
+                    <th scope="col">Ocupado</th>
                     <th scope="col">Ação</th>
                 </tr>
             </thead>
             <tbody>
+
+                {
+                    quartos.map((quarto, index) => {
+                        return(
+
+                            <tr key={index}>
+                                <td>{listagemQuarto = listagemQuarto + 1}</td>
+                                <td>{quarto.id}</td>
+                                <td>{quarto.capacidade}</td>
+                                <td>{quarto.tipo}</td>
+                                <td>{quarto.diaria}</td>
+                                <td>{quarto.ocupado ? 'Sim' : 'Não'}</td>
+                                <td>
+                                    <button type="button" className="btn btn-primary">Editar</button>
+                                    <button onClick={() => deletarQuarto(quarto.id)} type="button" className="btn btn-danger">Excluir</button>
+                                </td>
+                            </tr>
+                        );
+                    })
+                }
 
             </tbody>
         </table>

@@ -1,29 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
+import useReservaAPI from '../../helpers/ReservasApi';
 
 import './listarReserva.css';
 
 function ListarReserva() {
 
-    const [reservas, setReservas] = useState([]); // Vetor de categorias
-    const [totalPagesReservas, setTotalPagesReservas] = useState(1); // Total de paginas
-    const [actualPageReservas, setActualPageReservas] = useState(1);
+    let listagemReserva = 0;
+    const reservasAPI = useReservaAPI();
+    const [reservas, setReservas] = useState([]);
 
     useEffect(()=>{
 
         const getDadosReservas = async () => {
-        /* 
-        Da onde puxar as reservas?
-        Puxar da API dos quartos verificando se esta ocupado?
-        Puxar de uma tabela reservas?
-        Puxar da relação entre quartos e hospedes?
-        */
+        
+            const getDadosReservas = async () => {
+                const obj = await reservasAPI.fetchReserva();
+                console.log(obj);
+                if(obj) {
+                    
+                    setReservas(obj);
+                }
+            }
+
+            getDadosReservas();
         }
 
         getDadosReservas();
 
     },[])
+
+    function deletarReserva(id) {
+
+        try {
+            
+            reservasAPI.deleteReserva(id);
+        }catch(ex) {
+
+            console.log(ex);
+        }
+    }
 
   return (
     <>
@@ -57,6 +74,24 @@ function ListarReserva() {
                 </tr>
             </thead>
             <tbody>
+
+                {
+                    reservas.map((reserva, index) => {
+                        return(
+                            <tr key={index}>
+                                <td>{listagemReserva = listagemReserva + 1}</td>
+                                <td>{reserva.quarto.id}</td>
+                                <td>{reserva.quarto.diaria}</td>
+                                <td>{reserva.diarias}</td>
+                                <td>{reserva.hospedes[index]}</td>
+                                <td>
+                                    <button type="button" className="btn btn-primary">Editar</button>
+                                    <button onClick={() => deletarReserva(reserva.id)} type="button" className="btn btn-danger">Excluir</button>
+                                </td>
+                            </tr>
+                        );
+                    })
+                }
 
             </tbody>
         </table>

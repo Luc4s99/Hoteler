@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
+import useOperadorAPI from '../../helpers/OperadoresAPI';
 
 import './listarOperador.css';
 
 function ListarOperador() {
 
-    const [operador, setOperadors] = useState([]); // Vetor de categorias
-    const [totalPagesOperadors, setTotalPagesOperadors] = useState(1); // Total de paginas
-    const [actualPageOperadors, setActualPageOperadors] = useState(1);
+    let listagemOperador = 0;
+    const operadoresAPI = useOperadorAPI();
+    const [operador, setOperadores] = useState([]); // Vetor de categorias
 
     useEffect(()=>{
 
-        const getDadosOperadors = async () => {
-        
+        const getDadosOperadores = async () => {
+            const obj = await operadoresAPI.fetchOperador();
+
+            if(obj) {
+
+                setOperadores(obj);
+            }
         }
 
-        getDadosOperadors();
+        getDadosOperadores();
 
     },[])
 
@@ -46,10 +52,25 @@ function ListarOperador() {
                     <th scope="col">#</th>
                     <th scope="col">ID do Operador</th>
                     <th scope="col">Nome do Operador</th>
+                    <th scope="col">Nome de Usuário</th>
                     <th scope="col">Ação</th>
                 </tr>
             </thead>
             <tbody>
+
+                {
+                    operador.map((operador, index) => {
+                        return(
+                            <tr key={index}>
+                                <td>{listagemOperador = listagemOperador + 1}</td>
+                                <td>{operador.id}</td>
+                                <td>{operador.nome}</td>
+                                <td>{operador.usuario}</td>
+                                <td><button type="button" className="btn btn-primary">Editar</button></td>
+                            </tr>
+                        );
+                    })
+                }
 
             </tbody>
         </table>

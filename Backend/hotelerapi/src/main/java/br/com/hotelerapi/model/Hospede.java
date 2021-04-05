@@ -15,6 +15,10 @@ public class Hospede extends Pessoa{
 	@JoinColumn(name = "reserva_id")
 	private Reserva reserva;
 	
+	public Hospede() {
+		
+	}
+	
 	public Hospede(Long id, String nome, String endereco, String cidade, String estado, String cpf, String telefone,
 			String email, String sexo, Date nascimento) {
 		
