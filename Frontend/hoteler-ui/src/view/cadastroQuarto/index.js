@@ -38,7 +38,7 @@ function CadastroQuarto() {
 
     return (
       <>
-        {redirect == 1 ? <Redirect to="/telaInicial" /> : null}
+        {redirect === 1 ? <Redirect to="/telaInicial" /> : null}
         <NavBar />
         <div className="cadastroQuartoContainer">
             <h1 className="cadastroQuartoTitulo">Cadastro de Quarto</h1>

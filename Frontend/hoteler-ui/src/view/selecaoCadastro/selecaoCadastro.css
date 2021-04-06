@@ -21,6 +21,7 @@
 .selecaoCadastroOpcoes{
     display: flex;
     flex-direction: column;
+    margin-top: -20px;
 }
 
 .selecaoCadastroImagem{
@@ -71,4 +72,9 @@
     background-color: white;
     color: #1b501b;
     transition: .3s ease-in-out;
+}
+
+img {
+    height: 100px;
+    width: 100px;
 }

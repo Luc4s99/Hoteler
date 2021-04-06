@@ -26,6 +26,18 @@ function ListarOperador() {
 
     },[])
 
+    function excluirOperador(id) {
+
+        try{
+
+            operadoresAPI.deleteOperador(id);
+            window.location.reload();
+        }catch(error) {
+
+            console.log(error);
+        }
+    }
+
   return (
     <>
     <Navbar/>
@@ -66,7 +78,10 @@ function ListarOperador() {
                                 <td>{operador.id}</td>
                                 <td>{operador.nome}</td>
                                 <td>{operador.usuario}</td>
-                                <td><button type="button" className="btn btn-primary">Editar</button></td>
+                                <td>
+                                    <button type="button" className="btn btn-primary">Editar</button>
+                                    <button onClick={() => excluirOperador(operador.id)} type="button" className="btn btn-danger">Excluir</button>
+                                </td>
                             </tr>
                         );
                     })

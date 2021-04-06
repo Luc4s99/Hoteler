@@ -27,6 +27,18 @@ function ListarHospede() {
 
     },[])
 
+    function deletarHospede(id) {
+        
+        try {
+            
+            hospedeAPI.deleteHospede(id);
+            window.location.reload();
+        }catch(ex) {
+
+            console.log(ex);
+        }
+    }
+
   return (
     <>
     <Navbar/>
@@ -65,7 +77,10 @@ function ListarHospede() {
                                 <td>{listagemHospede = listagemHospede + 1}</td>
                                 <td>{hospede.id}</td>
                                 <td>{hospede.nome}</td>
-                                <td><button type="button" className="btn btn-primary">Editar</button></td>
+                                <td>
+                                    <button type="button" className="btn btn-primary">Editar</button>
+                                    <button onClick={() => deletarHospede(hospede.id)} type="button" className="btn btn-danger">Excluir</button>
+                                </td>
                             </tr>
                         );
                     })

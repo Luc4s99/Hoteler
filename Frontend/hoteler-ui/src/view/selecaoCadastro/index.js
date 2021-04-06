@@ -13,6 +13,7 @@ import Footer from '../../components/Footer';
 import quarto from '../../assets/images/quarto.jpeg';
 import hospede from '../../assets/images/hospede.jpeg';
 import operador from '../../assets/images/operador.jpeg';
+import logo from '../../assets/images/logo-hoteler.png';
 
 function SelecaoCadastro() {
   return (
@@ -20,7 +21,7 @@ function SelecaoCadastro() {
         <NavBar />
         <div className="selecaoCadastroContainer">
             <div className="selecaoCadastroLogo">
-                <img src="https://via.placeholder.com/500x150?text=Logo" alt="logo"></img>
+                <img src={logo} alt="logo"></img>
             </div>
             <span className="selecaoCadastroLabel"> Opções de Cadastro </span>
             <div className="selecaoCadastroOpcoes">

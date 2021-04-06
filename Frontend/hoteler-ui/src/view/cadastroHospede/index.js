@@ -61,7 +61,7 @@ function CadastroHospede() {
   
   return (
     <>
-      {redirect == 1 ? <Redirect to="/telaInicial" /> : null}
+      {redirect === 1 ? <Redirect to="/telaInicial" /> : null}
       <NavBar />
       <div className="cadastroHospedeContainer">
         <h1 className="cadastroHospedeTitulo"> Cadastro de Hospede </h1>

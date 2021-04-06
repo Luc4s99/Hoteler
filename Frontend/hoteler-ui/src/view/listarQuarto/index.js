@@ -31,6 +31,7 @@ function ListarQuarto() {
         try {
             
             quartoAPI.deleteQuarto(id);
+            window.location.reload();
         }catch(ex) {
 
             console.log(ex);
@@ -93,7 +94,7 @@ function ListarQuarto() {
                                 <td>{quarto.id}</td>
                                 <td>{quarto.capacidade}</td>
                                 <td>{quarto.tipo}</td>
-                                <td>{quarto.diaria}</td>
+                                <td>R${quarto.diaria}</td>
                                 <td>{quarto.ocupado ? 'Sim' : 'Não'}</td>
                                 <td>
                                     <button type="button" className="btn btn-primary">Editar</button>

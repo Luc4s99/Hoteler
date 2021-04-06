@@ -16,8 +16,9 @@ function ListarReserva() {
         const getDadosReservas = async () => {
         
             const getDadosReservas = async () => {
+                
                 const obj = await reservasAPI.fetchReserva();
-                console.log(obj);
+                
                 if(obj) {
                     
                     setReservas(obj);
