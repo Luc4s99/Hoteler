@@ -29,7 +29,7 @@ function CadastroQuarto() {
         const obj = quartoAPI.addQuarto(quarto);
 
         if(obj) {
-            //console.log("Quarto adicionado com sucesso");
+            
             setRedirect(1);
         } else {
             console.log(obj);
@@ -46,7 +46,7 @@ function CadastroQuarto() {
             <div className="cadastroQuarto">
                 <div className="form-group">
                     <label htmlFor="capacidadeQuarto">Capacidade do Quarto (Máximo de 10)</label>
-                    <input onChange={e => setCapacidade(e.target.value)} type="number" className="form-control" max="10" />
+                    <input onChange={e => setCapacidade(e.target.value)} type="number" className="form-control" max="10" min="1" />
 
                     <label htmlFor="tipoQuarto">Tipo do Quarto</label>
                     <select defaultValue="Selecione" onChange={e => setTipoQuarto(e.target.value)} className="form-control" name="tipo" id="tipoQuarto">

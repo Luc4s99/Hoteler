@@ -16,10 +16,10 @@ function Login() {
             const verificarOperadores = async () => {
                 
                 const obj = await operadoresAPI.hasOperadores();
-
+                
                 if(!obj) {
                     
-                    window.location.href = "http://localhost:3000/cadastroOperador";
+                    setRedirectOperador(1);
                 }
             }
 
@@ -30,23 +30,25 @@ function Login() {
     },[])
 
     const operadoresAPI = useOperadoresAPI();
-    const [redirect, setRedirect] = useState(0);
+    const [redirectOperador, setRedirectOperador] = useState(0);
+    const [redirectInicio, setRedirectInicio] = useState(0);
     const [usuario, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
 
-    function verificarLogin() {
-        //FALTA AQUI
-        const resp = operadoresAPI.verifyOperador(usuario, senha);
-        console.log(resp);
-        if(resp === false) {
-            console.log("entrou")
-            setRedirect(1);
+    async function verificarLogin() {
+
+        const resp = await operadoresAPI.verifyOperador(usuario, senha);
+        
+        if(resp === true) {
+            
+            setRedirectInicio(1);
         }
     }
 
     return (
     <>
-        {redirect === 1 ? <Redirect to="/telaInicial" /> : null}
+        {redirectInicio === 1 ? <Redirect to="/telaInicial" /> : null}
+        {redirectOperador === 1 ? <Redirect to="/cadastroOperador" /> : null}
         <div className="loginContainer">
             <div className="login">
                 <div className="mb-3">

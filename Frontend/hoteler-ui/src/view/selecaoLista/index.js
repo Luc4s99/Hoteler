@@ -14,6 +14,7 @@ import quarto from '../../assets/images/quarto.jpeg';
 import hospede from '../../assets/images/hospede.jpeg';
 import operador from '../../assets/images/operador.jpeg';
 import reserva from '../../assets/images/reserva.jpeg';
+import logo from '../../assets/images/logo-hoteler.png';
 
 function SelecaoLista() {
   return (
@@ -21,7 +22,7 @@ function SelecaoLista() {
         <NavBar />
         <div className="selecaoListaContainer">
             <div className="selecaoListaLogo">
-                <img src="https://via.placeholder.com/500x150?text=Logo" alt="logo"></img>
+                <img src={logo} alt="logo"></img>
             </div>
             <span className="selecaoListaLabel"> Opções de Listagem </span>
             <div className="selecaoListaOpcoes">

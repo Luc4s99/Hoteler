@@ -13,16 +13,17 @@ const API = {
 
             const query = `operadores`;
             const response = await endPoint.get(query);
+            let user = null;
 
             response.data.map((res) => {
                 
                 if((res.usuario.localeCompare(usuario)) === 0 && (res.senha.localeCompare(senha)) === 0) {
                     
-                    return true;
+                    user = res;
                 }
             })
 
-            return false;
+            return user ? true: false;
         }catch(error) {
 
             console.log(error)
